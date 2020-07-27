@@ -1,0 +1,16 @@
+<mat-drawer-container class="example-container" hasBackdrop="true" >
+    <mat-drawer #drawer mode="over">
+      <button mat-button class="option" [routerLink]="['/admin/manifest']" 
+        (click)="drawer.close()" >Manifest
+      </button>
+    </mat-drawer>
+    <mat-drawer-content >
+      <div class="nav-bar shadow fixed-top">
+        <i class="material-icons options-icon" (click)="drawer.toggle()" >more_horiz</i>
+        <div class="elements">  
+          <button mat-button (click)="this.showDevelopers()"> Desarrolladores </button>  
+        </div> 
+      </div>  
+      <router-outlet></router-outlet>
+    </mat-drawer-content>
+  </mat-drawer-container>

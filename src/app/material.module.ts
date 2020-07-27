@@ -1,0 +1,96 @@
+import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
+
+import { LayoutModule } from "@angular/cdk/layout";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { MatNativeDateModule } from "@angular/material/core";
+import {
+  MatToolbarModule,
+  MatButtonModule,
+  MatSidenavModule,
+  MatIconModule,
+  MatListModule,
+  MatFormFieldModule,
+  MatSlideToggleModule,
+  MatTooltipModule,
+  MatSnackBarModule,
+  MatDialogModule,
+  MatSelectModule,
+  MatInputModule,
+  MatChipsModule,
+  MatCardModule,
+  MatTableModule,
+  MatDatepickerModule,
+  MatRadioModule,
+  MatTabsModule,
+  MatProgressSpinnerModule,
+  MatProgressBarModule,
+  MatExpansionModule,
+  MatAutocompleteModule,
+  MatStepperModule
+} from "@angular/material";
+
+@NgModule({
+  declarations: [],
+  imports: [
+    CommonModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatCardModule,
+    MatChipsModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatAutocompleteModule,
+    MatStepperModule
+  ],
+  exports: [
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    MatFormFieldModule,
+    MatSlideToggleModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatInputModule,
+    MatTableModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatRadioModule,
+    MatCardModule,
+    MatChipsModule,
+    MatTabsModule,
+    MatProgressSpinnerModule,
+    MatProgressBarModule,
+    MatExpansionModule,
+    MatRadioModule,
+    MatAutocompleteModule,
+    MatStepperModule
+  ]
+})
+export class MaterialModule { }
