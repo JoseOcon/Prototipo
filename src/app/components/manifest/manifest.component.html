@@ -28,27 +28,30 @@
         <input type="time" matInput [(ngModel)]="time" matToolTip="Hora">
       </mat-form-field>
     </div>
-    <mat-form-field appearance="outline" style="width: 40%;">
-      <mat-label>Nombre del invitado</mat-label>
-      <input matInput type="text">
-    </mat-form-field>
-    <mat-form-field style="width: 20%;">
-      <mat-label>Nombre del producto</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let element of productos" [value]="element">
-          {{element}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
+    <div style="width: 100%; display: flex; justify-content: space-around;">
+      <mat-form-field appearance="outline" style="width: 40%;">
+        <mat-label>Nombre del invitado</mat-label>
+        <input matInput type="text">
+      </mat-form-field>
+      <mat-form-field style="width: 20%;">
+        <mat-label>Nombre del producto</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let element of productos" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+  
+      <mat-form-field style="width: 20%;">
+        <mat-label>Tipo de producto</mat-label>
+        <mat-select>
+          <mat-option *ngFor="let element of tipoProductos" [value]="element">
+            {{element}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>    
+    </div>
 
-    <mat-form-field style="width: 20%;">
-      <mat-label>Tipo de producto</mat-label>
-      <mat-select>
-        <mat-option *ngFor="let element of tipoProductos" [value]="element">
-          {{element}}
-        </mat-option>
-      </mat-select>
-    </mat-form-field>
     <div style="width: 100%;">
       <h3 class="tittle2">Opcional:</h3>
     </div>
