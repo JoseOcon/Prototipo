@@ -24,24 +24,24 @@
         </ng-container>
 
         <ng-container matColumnDef="Accion">
-            <th mat-header-cell *matHeaderCellDef style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
+            <th mat-header-cell *matHeaderCellDef style=" width: 10%; border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
             class="actions">
-                <section (click)="$event.stopPropagation()">
-                    <label>Todos</label>
-                    <mat-slide-toggle color="primary"
+                <div style="display: flex; justify-content: space-between;" >
+                    <label style="align-self: center;" >Todos</label>
+                    <mat-slide-toggle style="align-self: center;"  color="primary"
                         [checked]= checked>
                     </mat-slide-toggle>
-                </section>
+                </div>
             </th>
-            <td mat-cell *matCellDef="let element" class="actions"> 
-                <section (click)="$event.stopPropagation()">
-                    <mat-slide-toggle color="primary"
-                      [checked]= element.check>
+            <td style="width: 12%;" mat-cell *matCellDef="let element" class="actions"> 
+                <div style="display: flex; justify-content: space-between;">
+                    <mat-slide-toggle style="align-self: center;"  color="primary"
+                    [checked]= element.check>
                     </mat-slide-toggle>
-                    <button mat-raised-button color="primary" (click)="openNotes()">
-                        Notas
+                    <button matTooltip="Añadir notas"  mat-mini-fab color="primary" (click)="openNotes()">
+                        <i class="material-icons">comment</i>
                     </button>
-                </section>
+                </div>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
@@ -128,24 +128,24 @@
         </ng-container>
 
         <ng-container matColumnDef="Accion">
-            <th mat-header-cell *matHeaderCellDef style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
+            <th mat-header-cell *matHeaderCellDef style="width: 10%; border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
             class="actions">
-                <section (click)="$event.stopPropagation()">
-                    <label>All</label>
-                    <mat-slide-toggle  color="primary"
-                    [checked]= checked>
+                <div style="display: flex; justify-content: space-between;" >
+                    <label style="align-self: center;" >Todos</label>
+                    <mat-slide-toggle style="align-self: center;"  color="primary"
+                        [checked]= checked>
                     </mat-slide-toggle>
-                </section>
+                </div>
             </th>
-            <td mat-cell *matCellDef="let element" class="actions"> 
-                <section (click)="$event.stopPropagation()">
-                    <mat-slide-toggle color="primary"
+            <td style="width: 12%;" mat-cell *matCellDef="let element" class="actions"> 
+                <div style="display: flex; justify-content: space-between;">
+                    <mat-slide-toggle style="align-self: center;"  color="primary"
                     [checked]= element.check>
                     </mat-slide-toggle>
-                    <button mat-raised-button color="primary" (click)="openNotes()">
-                        Notas
+                    <button matTooltip="Añadir notas"  mat-mini-fab color="primary" (click)="openNotes()">
+                        <i class="material-icons">comment</i>
                     </button>
-                </section>
+                </div>
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>

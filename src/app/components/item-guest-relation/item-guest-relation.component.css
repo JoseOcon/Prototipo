@@ -2,3 +2,7 @@
     width: -webkit-fill-available; 
     padding: 0% 3% 0% 3%;
 }
+
+th, td, th.mat-header-cell{
+    text-align: center;
+}

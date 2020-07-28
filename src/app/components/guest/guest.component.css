@@ -22,6 +22,10 @@ th {
     width: 25%;
 }
 
+th, td, th.mat-header-cell{
+    text-align: center;
+}
+
 .actions {
     width: 3%;
     text-align: center;

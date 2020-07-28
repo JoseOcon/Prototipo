@@ -48,6 +48,10 @@ mat-drawer {
     color: white;
 }
 
+th, td, th.mat-header-cell{
+    text-align: center;
+}
+
 .nav-bar {
     display: flex;
     justify-content: space-between;

@@ -1,10 +1,14 @@
 .mainContainer {
-    width: 90%;
+    width: 95%;
     margin: 2% auto auto auto;
     padding: 1%;
 }
 
 h2 {
+    text-align: center;
+}
+
+th, td, th.mat-header-cell{
     text-align: center;
 }
 
