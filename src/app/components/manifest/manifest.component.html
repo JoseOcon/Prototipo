@@ -16,11 +16,13 @@
               </mat-slide-toggle>
             </section>
           <mat-form-field appearance="outline">
+              <mat-label>Ingrese una fecha</mat-label>
               <input matTooltip="Presione el Icono" matInput [matDatepicker]="startDate" placeholder="Ingrese una fecha" [(ngModel)]="start_Date" disabled >
               <mat-datepicker-toggle matSuffix [for]="startDate" ></mat-datepicker-toggle>
               <mat-datepicker #startDate disabled="false"></mat-datepicker>
           </mat-form-field>
           <mat-form-field *ngIf="checked == true" appearance="outline"> 
+              <mat-label>Ingrese una fecha</mat-label>
               <input matTooltip="Presione el Icono" matInput [matDatepicker]="endDate" [matDatepickerFilter]="dateFilter" placeholder="Ingrese una fecha" [(ngModel)]="end_Date" disabled >
               <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
               <mat-datepicker  #endDate [disabled]="start_Date == undefined" [startAt]="start_Date"></mat-datepicker>

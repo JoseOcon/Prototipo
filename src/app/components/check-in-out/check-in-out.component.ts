@@ -1,5 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MAT_DIALOG_DATA } from '@angular/material';
+import { MAT_DIALOG_DATA, MatDialog } from '@angular/material';
+import { NotesComponent } from '../notes/notes.component';
 
 @Component({
   selector: 'app-check-in-out',
@@ -15,6 +16,7 @@ export class CheckInOutComponent implements OnInit {
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
+    public dialogService: MatDialog
   ) { }
 
   ngOnInit() {
@@ -29,4 +31,15 @@ export class CheckInOutComponent implements OnInit {
     }
   }
 
+  openNotes(){
+    let dialogRef = this.dialogService.open(NotesComponent, {
+      minHeight: "50%",
+      maxHeight: "95%",
+      width: "40%",
+      minWidth: "280px",
+      data: {
+        tipo: 1
+      }
+    })
+  }
 }

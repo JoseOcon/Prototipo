@@ -10,6 +10,7 @@ import { CoverPageComponent } from './components/cover-page/cover-page.component
 import { GuestComponent } from './components/guest/guest.component';
 import { ItemsComponent } from './components/items/items.component';
 import { CheckInOutComponent } from './components/check-in-out/check-in-out.component';
+import { NotesComponent } from './components/notes/notes.component';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { CheckInOutComponent } from './components/check-in-out/check-in-out.comp
     GuestComponent,
     ItemsComponent,
     CheckInOutComponent,
+    NotesComponent,
   ],
   imports: [
     BrowserModule,
@@ -27,7 +29,7 @@ import { CheckInOutComponent } from './components/check-in-out/check-in-out.comp
     AppRoutingModule
   ],
   providers: [],
-  entryComponents: [CheckInOutComponent],
+  entryComponents: [CheckInOutComponent,NotesComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

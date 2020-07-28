@@ -27,7 +27,8 @@ export class GuestComponent implements OnInit {
 
   openCheckDialog(){
     let dialogRef = this.dialogService.open(CheckInOutComponent, {
-      height: "95%",
+      minHeight: "50%",
+      maxHeight: "95%",
       width: "80%",
       minWidth: "280px",
       data: {

@@ -38,7 +38,7 @@
                     <mat-slide-toggle color="primary"
                       [checked]= element.check>
                     </mat-slide-toggle>
-                    <button mat-raised-button color="primary">
+                    <button mat-raised-button color="primary" (click)="openNotes()">
                         Notas
                     </button>
                 </section>
@@ -47,6 +47,11 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
     </table>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <button mat-raised-button color="primary">
+            Realizar CheckIn/CheckOut
+        </button>
+    </div>
 </div>
 
 <div *ngIf="items.length != 0" class="mainContainer">
@@ -137,7 +142,7 @@
                     <mat-slide-toggle color="primary"
                     [checked]= element.check>
                     </mat-slide-toggle>
-                    <button mat-raised-button color="primary">
+                    <button mat-raised-button color="primary" (click)="openNotes()">
                         Notas
                     </button>
                 </section>
@@ -146,10 +151,10 @@
         <tr mat-header-row *matHeaderRowDef="displayedColumns2"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns2;"></tr>
     </table>
+    <div style="width: 100%; display: flex; justify-content: center;">
+        <button mat-raised-button color="primary">
+            Realizar CheckIn/CheckOut
+        </button>
+    </div>
 </div>
 
-<div style="width: 100%; display: flex; justify-content: center;">
-    <button mat-raised-button color="primary">
-        Realizar CheckIn/CheckOut
-    </button>
-</div>
