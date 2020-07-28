@@ -9,6 +9,7 @@ import { ManifestComponent } from './components/manifest/manifest.component';
 import { CoverPageComponent } from './components/cover-page/cover-page.component';
 import { GuestComponent } from './components/guest/guest.component';
 import { ItemsComponent } from './components/items/items.component';
+import { CheckInOutComponent } from './components/check-in-out/check-in-out.component';
 
 @NgModule({
   declarations: [
@@ -17,6 +18,7 @@ import { ItemsComponent } from './components/items/items.component';
     CoverPageComponent,
     GuestComponent,
     ItemsComponent,
+    CheckInOutComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,6 +27,7 @@ import { ItemsComponent } from './components/items/items.component';
     AppRoutingModule
   ],
   providers: [],
+  entryComponents: [CheckInOutComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

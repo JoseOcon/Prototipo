@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+import { CheckInOutComponent } from '../check-in-out/check-in-out.component';
 
 @Component({
   selector: 'app-items',
@@ -20,10 +22,24 @@ export class ItemsComponent implements OnInit {
       markup: 125.99
     }
   ]
-  displayedColumns: string[] = ['Servicio', 'Fecha', 'Cantidad', 'Pax', 'Detalle', 'Proveedor', 'Costo', 'Precio', 'Markup', 'Accion'];
-  constructor() { }
+  displayedColumns: string[] = ['Servicio', 'Fecha', 'Cantidad', 'Pax', 'Detalle', 'Proveedor', 'Costo', 'Precio', 'Markup', 'Estado','Accion'];
+  constructor(
+    public dialogService: MatDialog
+  ) { }
 
   ngOnInit() {
   }
 
+  openCheckDialog(){
+    let dialogRef = this.dialogService.open(CheckInOutComponent, {
+      height: "95%",
+      width: "80%",
+      minWidth: "280px",
+      data: {
+        tipo: 0
+      }
+    })
+  }
+  
+  
 }
