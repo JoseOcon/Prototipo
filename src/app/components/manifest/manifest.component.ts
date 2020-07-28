@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatAutocomplete, MatAutocompleteSelectedEvent } from '@angular/material';
+import { MatAutocomplete, MatAutocompleteSelectedEvent, MatSnackBar } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 
 export interface PeriodicElement {
@@ -17,7 +17,7 @@ export interface PeriodicElement {
 })
 export class ManifestComponent implements OnInit {
   displayedColumns: string[] = ['item', 'cost'];
-  
+  durationInSeconds = 5;
   transactions = [
     {item: 'Persona 1', cost: "Adulto"},
     {item: 'Persona 2', cost: "Adulto"},
@@ -42,7 +42,7 @@ export class ManifestComponent implements OnInit {
   productos = ["Producto A", "Producto B", "Producto C"]
   tipoProductos = ["Tipo A", "Tipo B", "Tipo C"]
  
-  constructor() { }
+  constructor(private _snackBar: MatSnackBar) { }
 
   ngOnInit() {
     document.getElementById('booking').style.display = 'none';
@@ -53,7 +53,13 @@ export class ManifestComponent implements OnInit {
     document.getElementById('booking').style.display = 'none';
     document.getElementById('filters').style.display = 'block';
     document.getElementById('back').style.display = 'none';
+    document.getElementById('putodiv').style.display = 'block';
+  }
 
+  alerta(action: string) {
+      this._snackBar.open("Abre BOOKINGS", action, {
+        duration: 2000,
+      });
   }
 
   filter() {
