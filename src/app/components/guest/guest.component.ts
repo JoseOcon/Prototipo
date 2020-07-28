@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { CheckInOutComponent } from '../check-in-out/check-in-out.component';
+import { ItemGuestRelationComponent } from '../item-guest-relation/item-guest-relation.component';
 
 @Component({
   selector: 'app-guest',
@@ -37,4 +38,15 @@ export class GuestComponent implements OnInit {
     })
   }
 
+  openRelationDialog(){
+    let dialogRef = this.dialogService.open(ItemGuestRelationComponent, {
+      minHeight: "50%",
+      maxHeight: "95%",
+      width: "80%",
+      minWidth: "280px",
+      data: {
+        tipo: 1
+      }
+    })
+  }
 }

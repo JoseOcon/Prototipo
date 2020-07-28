@@ -1,0 +1,62 @@
+<div *ngIf="reltionGuest == true" class="mainContainer">
+    <h2 style="width: 100%; text-align: center;">Añadir invitados al item: Prueba</h2>
+    <div class="chip-list">
+        <mat-form-field class="chip-list" appearance="outline">
+          <mat-chip-list #chipList>
+            <mat-chip class="chip"
+              *ngFor="let g of guest"
+              [selectable]="selectable"
+              [removable]="removable">
+              {{g}}
+              <i matChipRemove class="material-icons" (click)="remove1(g)">cancel</i>
+            </mat-chip>
+            <input
+              placeholder="Seleccione los invitados"
+              #tagInput
+              [matChipInputFor]="chipList"
+              [matAutocomplete]="autoGuest"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+          </mat-chip-list>
+          <mat-autocomplete #autoGuest="matAutocomplete" (optionSelected)="selected1($event)">
+            <mat-option *ngFor="let elem of filteredGuest " [value]="elem">
+              {{elem}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+    </div>
+</div>
+
+<div *ngIf="reltionGuest == false" class="mainContainer">
+    <h2 style="width: 100%; text-align: center;">Añadir items al invitado: Prueba</h2>
+    <div class="chip-list">
+        <mat-form-field class="chip-list" appearance="outline">
+          <mat-chip-list #chipList>
+            <mat-chip class="chip"
+              *ngFor="let i of items"
+              [selectable]="selectable"
+              [removable]="removable">
+              {{i}}
+              <i matChipRemove class="material-icons" (click)="remove2(i)">cancel</i>
+            </mat-chip>
+            <input
+              placeholder="Seleccione los items"
+              #tagInput
+              [matChipInputFor]="chipList"
+              [matAutocomplete]="autoItems"
+              [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+          </mat-chip-list>
+          <mat-autocomplete #autoItems="matAutocomplete" (optionSelected)="selected2($event)">
+            <mat-option *ngFor="let elem of filteredItem " [value]="elem">
+              {{elem}}
+            </mat-option>
+          </mat-autocomplete>
+        </mat-form-field>
+    </div>
+</div>
+
+<div style="width: 100%; display: flex; justify-content: center;">
+    <button mat-raised-button color="primary">
+        <i class="material-icons">done_outline</i>
+    </button>
+</div>
+

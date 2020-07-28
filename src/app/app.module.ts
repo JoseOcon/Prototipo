@@ -11,6 +11,7 @@ import { GuestComponent } from './components/guest/guest.component';
 import { ItemsComponent } from './components/items/items.component';
 import { CheckInOutComponent } from './components/check-in-out/check-in-out.component';
 import { NotesComponent } from './components/notes/notes.component';
+import { ItemGuestRelationComponent } from './components/item-guest-relation/item-guest-relation.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { NotesComponent } from './components/notes/notes.component';
     ItemsComponent,
     CheckInOutComponent,
     NotesComponent,
+    ItemGuestRelationComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +31,7 @@ import { NotesComponent } from './components/notes/notes.component';
     AppRoutingModule
   ],
   providers: [],
-  entryComponents: [CheckInOutComponent,NotesComponent],
+  entryComponents: [CheckInOutComponent,NotesComponent,ItemGuestRelationComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

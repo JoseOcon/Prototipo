@@ -83,8 +83,8 @@ export class ManifestComponent implements OnInit {
     source.checked = this.checked;
   }
 
-  remove(category: string): void {
-    let index = this.recursos.indexOf(category)
+  remove(any: string): void {
+    let index = this.recursos.indexOf(any)
     if (index >= 0) {
       this.recursos.splice(index, 1);
     }
