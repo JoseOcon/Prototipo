@@ -5,6 +5,7 @@ import { LayoutModule } from "@angular/cdk/layout";
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { MatNativeDateModule } from "@angular/material/core";
 import {
+  MatMenuModule,
   MatToolbarModule,
   MatButtonModule,
   MatSidenavModule,
@@ -60,7 +61,8 @@ import {
     MatProgressBarModule,
     MatExpansionModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMenuModule
   ],
   exports: [
     LayoutModule,
@@ -90,7 +92,8 @@ import {
     MatExpansionModule,
     MatRadioModule,
     MatAutocompleteModule,
-    MatStepperModule
+    MatStepperModule,
+    MatMenuModule
   ]
 })
 export class MaterialModule { }

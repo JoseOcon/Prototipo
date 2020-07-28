@@ -1,0 +1,105 @@
+<div class="mainContainer">
+    <h2 style="text-align: center; width: 100%;">Items</h2>
+    <table mat-table [dataSource]="items">
+        <ng-container matColumnDef="Servicio">
+            <th mat-header-cell *matHeaderCellDef style="border-bottom-left-radius: 5px; border-top-left-radius: 5px;">
+                Servicio
+            </th>
+            <td mat-cell *matCellDef="let element" data-label="Servicio"> {{element.servicio}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Fecha">
+            <th mat-header-cell *matHeaderCellDef> Fecha </th>
+            <td mat-cell *matCellDef="let element" data-label="Fecha">
+            <p> {{element.fecha}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Cantidad">
+            <th mat-header-cell *matHeaderCellDef> Cantidad </th>
+            <td mat-cell *matCellDef="let element" data-label="Cantidad">
+            <p> {{element.cantidad}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Pax">
+            <th mat-header-cell *matHeaderCellDef> Pax </th>
+            <td mat-cell *matCellDef="let element" data-label="Pax">
+            <p> {{element.pax}}</p>
+            </td>
+        </ng-container>
+        
+        <ng-container matColumnDef="Detalle">
+            <th mat-header-cell *matHeaderCellDef> Detalle </th>
+            <td mat-cell *matCellDef="let element" data-label="Detalle">
+            <p> {{element.detalle}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Proveedor">
+            <th mat-header-cell *matHeaderCellDef> Proveedor </th>
+            <td mat-cell *matCellDef="let element" data-label="Proveedor">
+            <p> {{element.proveedor}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Costo">
+            <th mat-header-cell *matHeaderCellDef> Costo </th>
+            <td mat-cell *matCellDef="let element" data-label="Costo">
+            <p>${{element.costo}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Precio">
+            <th mat-header-cell *matHeaderCellDef> Precio </th>
+            <td mat-cell *matCellDef="let element" data-label="Precio">
+            <p>${{element.precio}}</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Markup">
+            <th mat-header-cell *matHeaderCellDef> Markup </th>
+            <td mat-cell *matCellDef="let element" data-label="Markup">
+            <p> {{element.markup}}%</p>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Estado">
+            <th mat-header-cell *matHeaderCellDef> Estado </th>
+            <td mat-cell *matCellDef="let element" data-label="Estado">
+            <label><i class="material-icons" style="background-color: springgreen; color: white;">check</i></label>
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Accion">
+            <th mat-header-cell *matHeaderCellDef style="border-bottom-right-radius: 5px; border-top-right-radius: 5px;"
+            class="actions"> </th>
+            <td mat-cell *matCellDef="let element" class="actions"> 
+                <i class="material-icons" [matMenuTriggerFor]="menu"> more_horiz </i>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
+
+<mat-menu #menu="matMenu" >
+    <ng-template let-data="data" let-id="id" matMenuContent>
+        <div class="container">
+            <button mat-raised-button class="item"> 
+                <i class="material-icons">info</i>Detalles de estado
+            </button> 
+            <button mat-raised-button class="item">
+                <i class="material-icons">post_add</i>Añadir a Item
+            </button>
+            <hr>
+            <label style="width: 100%;">Vouchers</label>
+            <button mat-raised-button class="item">
+                <i class="material-icons">get_app</i>Descargar voucher
+            </button> 
+            <button mat-raised-button class="item" style="width: 100%; margin: 2%;">
+                <i class="material-icons">mail</i>Enviar voucher
+            </button> 
+        </div>
+    </ng-template>
+</mat-menu>
