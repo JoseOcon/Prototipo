@@ -1,105 +1,272 @@
 <div class="mainContainer">
-    <div class="filters">
+    <div class="filters" id="back">
+        <h3 class="tittle" (click)="back()" >Filtros</h3>
+    </div>
 
-        <h3 class="tittle">Filtros</h3>
-
-        <div class="dates">
-            <section style="align-self: center;" (click)="$event.stopPropagation()">
-                <label>{{checked? "Rango de fechas": "Fecha única"}}</label>
-                <mat-slide-toggle 
-                    appearance="outline" 
-                    (change)="changeState($event)" 
-                    color="primary" 
-                    [checked]= "checked"
-                >
-                </mat-slide-toggle>
+    <div class="filters" id="filters">
+      <h3 class="tittle">Filtros</h3>
+      <div class="dates">
+          <section style="align-self: center;" (click)="$event.stopPropagation()">
+              <label>{{checked? "Rango de fechas": "Fecha única"}}</label>
+              <mat-slide-toggle 
+                  appearance="outline" 
+                  (change)="changeState($event)" 
+                  color="primary" 
+                  [checked]= "checked">
+              </mat-slide-toggle>
             </section>
-    
-            <mat-form-field appearance="outline">
-                <input matTooltip="Presione el Icono" matInput [matDatepicker]="startDate" placeholder="Ingrese una fecha" [(ngModel)]="start_Date" disabled >
-                <mat-datepicker-toggle matSuffix [for]="startDate" ></mat-datepicker-toggle>
-                <mat-datepicker #startDate disabled="false"></mat-datepicker>
-            </mat-form-field>
-            
-            <mat-form-field *ngIf="checked == true" appearance="outline"> 
-                <input matTooltip="Presione el Icono" matInput [matDatepicker]="endDate" [matDatepickerFilter]="dateFilter" placeholder="Ingrese una fecha" [(ngModel)]="end_Date" disabled >
-                <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
-                <mat-datepicker  #endDate [disabled]="start_Date == undefined" [startAt]="start_Date"></mat-datepicker>
-            </mat-form-field>
-    
-            <mat-form-field  appearance="outline">
-                <mat-label>Hora Inicial</mat-label>
-                <input type="time" matInput [(ngModel)]="time" matToolTip="Hora" >
-            </mat-form-field>
-        </div>
+          <mat-form-field appearance="outline">
+              <input matTooltip="Presione el Icono" matInput [matDatepicker]="startDate" placeholder="Ingrese una fecha" [(ngModel)]="start_Date" disabled >
+              <mat-datepicker-toggle matSuffix [for]="startDate" ></mat-datepicker-toggle>
+              <mat-datepicker #startDate disabled="false"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field *ngIf="checked == true" appearance="outline"> 
+              <input matTooltip="Presione el Icono" matInput [matDatepicker]="endDate" [matDatepickerFilter]="dateFilter" placeholder="Ingrese una fecha" [(ngModel)]="end_Date" disabled >
+              <mat-datepicker-toggle matSuffix [for]="endDate"></mat-datepicker-toggle>
+              <mat-datepicker  #endDate [disabled]="start_Date == undefined" [startAt]="start_Date"></mat-datepicker>
+          </mat-form-field>
+          <mat-form-field  appearance="outline">
+              <mat-label>Hora Inicial</mat-label>
+              <input type="time" matInput [(ngModel)]="time" matToolTip="Hora" >
+          </mat-form-field>
+      </div>
+      <mat-form-field appearance="outline" style="width: 40%;">
+          <mat-label>Nombre del invitado</mat-label>
+          <input
+              matInput
+              type="text"
+          >
+      </mat-form-field>
+      <mat-form-field style="width: 20%;">
+          <mat-label>Nombre del producto</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let element of productos" [value]="element">
+              {{element}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
 
-        <mat-form-field appearance="outline" style="width: 40%;">
-            <mat-label>Nombre del invitado</mat-label>
-            <input
-                matInput
-                type="text"
-            >
-        </mat-form-field>
-
-        <mat-form-field style="width: 20%;">
-            <mat-label>Nombre del producto</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let element of productos" [value]="element">
-                {{element}}
+      <mat-form-field style="width: 20%;">
+          <mat-label>Tipo de producto</mat-label>
+          <mat-select>
+            <mat-option *ngFor="let element of tipoProductos" [value]="element">
+              {{element}}
+            </mat-option>
+          </mat-select>
+      </mat-form-field>
+      <div style="width: 100%;">
+          <h3 class="tittle2">Opcional:</h3>
+      </div>
+      <div  class="chip-list">
+          <mat-form-field class="chip-list" appearance="outline">
+            <mat-chip-list #chipList>
+              <mat-chip class="chip"
+                *ngFor="let recurso of recursos"
+                [selectable]="selectable"
+                [removable]="removable">
+                {{recurso}}
+                <i matChipRemove class="material-icons" (click)="remove(recurso)">cancel</i>
+              </mat-chip>
+              <input
+                placeholder="Seleccione los recursos"
+                #tagInput
+                [matChipInputFor]="chipList"
+                [matAutocomplete]="auto"
+                [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
+            </mat-chip-list>
+            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+              <mat-option *ngFor="let r of filteredRecursos " [value]="r">
+                {{r}}
               </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <mat-form-field style="width: 20%;">
-            <mat-label>Tipo de producto</mat-label>
-            <mat-select>
-              <mat-option *ngFor="let element of tipoProductos" [value]="element">
-                {{element}}
-              </mat-option>
-            </mat-select>
-        </mat-form-field>
-
-        <div style="width: 100%;">
-            <h3 class="tittle2">Opcional:</h3>
-        </div>
+            </mat-autocomplete>
+          </mat-form-field>
+      </div>
+      <div style="width: 100%; display: flex; justify-content: center; margin: auto auto 1% auto;">
+          <button style="background-color: #0072D4; color: white;" mat-raised-button 
+            (click)="filter()">
+              <i class="material-icons">search</i>Filtrar
+          </button>
+      </div>
+  </div>
+  <br>
+  <div class="booking" id="booking">
     
-        <div  class="chip-list">
-            <mat-form-field class="chip-list" appearance="outline">
-              <mat-chip-list #chipList>
-                <mat-chip class="chip"
-                  *ngFor="let recurso of recursos"
-                  [selectable]="selectable"
-                  [removable]="removable">
-                  {{recurso}}
-                  <i matChipRemove class="material-icons" (click)="remove(recurso)">cancel</i>
-                </mat-chip>
-                <input
-                  placeholder="Seleccione los recursos"
-                  #tagInput
-                  [matChipInputFor]="chipList"
-                  [matAutocomplete]="auto"
-                  [matChipInputSeparatorKeyCodes]="separatorKeysCodes">
-              </mat-chip-list>
-              <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
-                <mat-option *ngFor="let r of filteredRecursos " [value]="r">
-                  {{r}}
-                </mat-option>
-              </mat-autocomplete>
-            </mat-form-field>
-        </div>
-
-        <div style="width: 100%; display: flex; justify-content: center; margin: auto auto 1% auto;">
-            <button style="background-color: #0072D4; color: white;" mat-raised-button >
-                <i class="material-icons">search</i>Filtrar
-            </button>
-        </div>
-    </div>
-
-
-    <div> 
+    <mat-accordion class="example-headers-align">
+      <mat-expansion-panel [expanded]="step === 0" (opened)="setStep(0)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Fecha</mat-panel-title>
+          <mat-panel-description>Nombre del producto</mat-panel-description>
+          <mat-panel-description>Reservas: 2</mat-panel-description>
+          <mat-panel-description matTooltip="Adultos: 6">Invitados: 6</mat-panel-description>
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Numero de reserva: # </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+          </ng-container>
+          <ng-container matColumnDef="cost">
+            <th mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button matTooltip="Imprimir voucher"><mat-icon>print</mat-icon></button>
+              <button mat-icon-button matTooltip="Administrar"><mat-icon class="material-icons">edit</mat-icon></button>              
+              <button mat-icon-button matTooltip="Check In/Out"><mat-icon>check_box</mat-icon></button>                   
+           </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.cost}} </td>
+            <td mat-footer-cell *matFooterCellDef> ### </td>
+          </ng-container>
+          <ng-container matColumnDef="item-description">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          </ng-container>
+          <ng-container matColumnDef="cost-description">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"
+              class="example-first-header-row">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="['item-description', 'cost-description']"
+              class="example-second-header-row">
+          </tr>        
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>        
+          <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
+        </table>
         
+      <div style="width: 100%; display: flex; justify-content: center; margin: auto auto 1% auto;">
+       
     </div>
+   <br>
+        <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Numero de reserva </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+          </ng-container>
+          <ng-container matColumnDef="cost">
+            <th mat-header-cell *matHeaderCellDef>
+              <button mat-icon-button matTooltip="Imprimir voucher"><mat-icon>print</mat-icon></button>
+              <button mat-icon-button matTooltip="Administrar"><mat-icon class="material-icons">edit</mat-icon></button>              
+              <button mat-icon-button matTooltip="Check In/Out"><mat-icon>check_box</mat-icon></button>                   
+  
+            </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.cost}} </td>
+            <td mat-footer-cell *matFooterCellDef> ### </td>
+          </ng-container>
+          <ng-container matColumnDef="item-description">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          </ng-container>
+          <ng-container matColumnDef="cost-description">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"
+              class="example-first-header-row">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="['item-description', 'cost-description']"
+              class="example-second-header-row">
+          </tr>        
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>        
+          <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
+        </table>
+  
+        <mat-action-row>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 1" (opened)="setStep(1)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Fecha</mat-panel-title>
+          <mat-panel-description>Nombre del producto</mat-panel-description>
+          <mat-panel-description>Reservas: 1</mat-panel-description>
+          <mat-panel-description matTooltip="Adultos: 3">Invitados: 3</mat-panel-description>
+        </mat-expansion-panel-header>
+        <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Numero de reserva </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+          </ng-container>
+          <ng-container matColumnDef="cost">
+            <th mat-header-cell *matHeaderCellDef> 
+              <button mat-icon-button matTooltip="Imprimir voucher"><mat-icon>print</mat-icon></button>
+              <button mat-icon-button matTooltip="Administrar"><mat-icon class="material-icons">edit</mat-icon></button>              
+              <button mat-icon-button matTooltip="Check In/Out"><mat-icon>check_box</mat-icon></button>                   
 
+            </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.cost}} </td>
+            <td mat-footer-cell *matFooterCellDef> ### </td>
+          </ng-container>
+          <ng-container matColumnDef="item-description">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          </ng-container>
+          <ng-container matColumnDef="cost-description">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"
+              class="example-first-header-row">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="['item-description', 'cost-description']"
+              class="example-second-header-row">
+          </tr>        
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>        
+          <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
+        </table>
+        
+   
+
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">Next</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+      <mat-expansion-panel [expanded]="step === 2" (opened)="setStep(2)" hideToggle>
+        <mat-expansion-panel-header>
+          <mat-panel-title>Fecha</mat-panel-title>
+          <mat-panel-description>Nombre del producto</mat-panel-description>
+          <mat-panel-description>Reservas: 1</mat-panel-description>
+          <mat-panel-description matTooltip="Adultos: 5">Invitados: 5</mat-panel-description>
+        </mat-expansion-panel-header>
+    
+        <table mat-table [dataSource]="transactions" class="mat-elevation-z8">
+          <ng-container matColumnDef="item">
+            <th mat-header-cell *matHeaderCellDef> Numero de reserva </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.item}} </td>
+            <td mat-footer-cell *matFooterCellDef> Total </td>
+          </ng-container>
+          <ng-container matColumnDef="cost">
+            <th mat-header-cell *matHeaderCellDef> 
+              <button mat-icon-button matTooltip="Imprimir voucher"><mat-icon>print</mat-icon></button>
+              <button mat-icon-button matTooltip="Administrar"><mat-icon class="material-icons">edit</mat-icon></button>              
+              <button mat-icon-button matTooltip="Check In/Out"><mat-icon>check_box</mat-icon></button>                   
+
+            </th>
+            <td mat-cell *matCellDef="let transaction"> {{transaction.cost}} </td>
+            <td mat-footer-cell *matFooterCellDef> ### </td>
+          </ng-container>
+          <ng-container matColumnDef="item-description">
+            <th mat-header-cell *matHeaderCellDef> Nombre </th>
+          </ng-container>
+          <ng-container matColumnDef="cost-description">
+            <th mat-header-cell *matHeaderCellDef> Tipo </th>
+          </ng-container>
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"
+              class="example-first-header-row">
+          </tr>
+          <tr mat-header-row *matHeaderRowDef="['item-description', 'cost-description']"
+              class="example-second-header-row">
+          </tr>        
+          <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>        
+          <tr mat-footer-row *matFooterRowDef="displayedColumns" class="example-first-footer-row"></tr>
+        </table>
+        
+        <mat-action-row>
+          <button mat-button color="warn" (click)="prevStep()">Previous</button>
+          <button mat-button color="primary" (click)="nextStep()">End</button>
+        </mat-action-row>
+      </mat-expansion-panel>
+    
+    </mat-accordion>
+
+    </div>
 </div>
 
 

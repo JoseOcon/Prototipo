@@ -1,8 +1,20 @@
 .mainContainer{
-    display: flex;
     width: 90%;
     margin: 4% auto auto auto;
 } 
+
+.booking{
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    border: solid 1.5px  #0072D4;
+    border-radius: 10px;
+}
+
+.mat-table{
+    width: 100%;
+}
 
 .filters{
     width: 100%;
