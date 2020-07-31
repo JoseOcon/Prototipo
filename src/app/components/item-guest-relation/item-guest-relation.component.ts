@@ -15,7 +15,7 @@ export class ItemGuestRelationComponent implements OnInit {
   separatorKeysCodes: number[] = [ENTER, COMMA];
   filteredGuest = ["Invitado 1", "Invitado 2", "Invitado 3", "Invitado 4"];
   guest: Array<any> = [];
-  filteredItem = ["Item 1", "Item 2", "Item 3", "Item 4"];
+  filteredItem = ["Ítem 1", "Ítem 2", "Ítem 3", "Ítem 4"];
   items: Array<any> = [];
   @ViewChild('auto', { static: false }) matAutocomplete: MatAutocomplete;
   reltionGuest: boolean;
